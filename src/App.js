@@ -1,16 +1,15 @@
-import React, { Component, lazy, Suspense } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import './App.css'
 
-const About = lazy(() => import(/*webpackChunkName:"about"*/ './About.js'))
-
-class App extends Component {
-  render() {
-    return (
-      <Suspense fallback={<span>loading...</span>}>
-        <About />
-      </Suspense>
-    )
-  }
+function App() {
+  const [count, setCount] = useState(0)
+  const [size, setSize] = useState({
+    
+  })
+  useEffect(() => {
+    document.title = count
+  })
+  return <button onClick={() => setCount(count + 1)}>Click: {count}</button>
 }
 
 export default App
